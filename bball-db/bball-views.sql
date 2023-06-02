@@ -87,3 +87,4 @@ CREATE VIEW `roster` AS
         ((`teams_players` `tp`
         LEFT JOIN `teams` ON ((`tp`.`team_id` = `teams`.`team_id`)))
         LEFT JOIN `players` ON ((`tp`.`player_id` = `players`.`player_id`)))
+

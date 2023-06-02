@@ -1,7 +1,7 @@
 -- -----------------------------------------------------
 -- Table Season
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `season` (
+CREATE TABLE IF NOT EXISTS `seasons` (
   `season_id` INTEGER NOT NULL,
   `season_name` VARCHAR(20) NULL DEFAULT NULL,
   `year` INTEGER NULL DEFAULT NULL,
@@ -13,6 +13,7 @@ CREATE TABLE IF NOT EXISTS `season` (
 CREATE TABLE IF NOT EXISTS `players` (
   `player_id` INT NOT NULL,
   `player_name` VARCHAR(255) NOT NULL,
+  `player_last_name` VARCHAR(255) NOT NULL,
   `player_number` INT NULL DEFAULT NULL,
   `player_pos` VARCHAR(5) NULL DEFAULT NULL,
   PRIMARY KEY (`player_id`));
@@ -29,6 +30,8 @@ CREATE TABLE IF NOT EXISTS `teams` (
   `losses` INT NULL DEFAULT NULL,
   `PF` INT NULL DEFAULT NULL,
   `PA` INT NULL DEFAULT NULL,
+  `rebounds_tot` INT NULL DEFAULT NULL,
+  `fouls_tot` INT NULL DEFAULT NULL,
   PRIMARY KEY (`team_id`),
   FOREIGN KEY (`season_id` ) 
     REFERENCES season (`season_id`)
