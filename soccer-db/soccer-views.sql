@@ -59,7 +59,7 @@ CREATE VIEW `team_totals` AS
 CREATE  VIEW `player_totals` AS 
     SELECT
         `st`.`player_id` AS `p_id`,
-        `players`.`player_name` AS `name`,
+        `players`.`player_name` AS `player_name`,
         Count(*) AS `games_played`,
         sum(`st`.`goals`) AS `goals`,
         sum(`st`.`assists`) AS `assists`
