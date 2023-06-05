@@ -1,5 +1,5 @@
-team_id,season_id,team_name,team_captain,wins,losses,goals_for,goals_against,points
-1,1,"Muzzies",,0,0,0,0,1
-2,1,"Yeminis",,0,0,0,0,2
-3,1,"Man United",,0,0,0,0,3
-4,1,"Afriqa",,0,0,0,0,4
+team_id,season_id,team_name,team_captain,wins,losses,draws,goals_for,goals_against,points
+1,1,"Muzzies",,1,1,1,7,3,4
+2,1,"Yeminis",,2,0,1,2,6,5
+3,1,"Man United",,1,2,1,4,3,3
+4,1,"Afriqa",,1,0,2,0,4,1

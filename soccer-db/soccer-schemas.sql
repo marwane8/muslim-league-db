@@ -28,6 +28,7 @@ CREATE TABLE IF NOT EXISTS `teams` (
   `team_captain` INT NULL DEFAULT NULL,
   `wins` INT NULL DEFAULT NULL,
   `losses` INT NULL DEFAULT NULL,
+  `draws` INT NULL DEFAULT NULL,
   `goals_for` INT NULL DEFAULT NULL,
   `goals_against` INT NULL DEFAULT NULL,
   `points` INT NULL DEFAULT NULL,
