@@ -16,8 +16,8 @@ INSERT INTO location (location_id,court,address,city,state)
 SELECT location_id,court,address,city,state
 FROM location_temp;
 
-INSERT INTO teams (team_id,season_id,team_name,team_captain,wins,losses,GF,GA)
-SELECT team_id,season_id,team_name,team_captain,wins,losses,GF,GA
+INSERT INTO teams (team_id,season_id,team_name,team_captain,wins,losses,goals_for,goals_against,points)
+SELECT team_id,season_id,team_name,team_captain,wins,losses,goals_for,goals_against,points
 FROM teams_temp;
 
 INSERT INTO games (game_id, team1_id, team2_id, location_id, date, start_time, playoff)

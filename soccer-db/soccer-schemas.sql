@@ -28,8 +28,9 @@ CREATE TABLE IF NOT EXISTS `teams` (
   `team_captain` INT NULL DEFAULT NULL,
   `wins` INT NULL DEFAULT NULL,
   `losses` INT NULL DEFAULT NULL,
-  `GF` INT NULL DEFAULT NULL,
-  `GA` INT NULL DEFAULT NULL,
+  `goals_for` INT NULL DEFAULT NULL,
+  `goals_against` INT NULL DEFAULT NULL,
+  `points` INT NULL DEFAULT NULL,
   PRIMARY KEY (`team_id`),
   FOREIGN KEY (`season_id` ) 
     REFERENCES season (`season_id`)
