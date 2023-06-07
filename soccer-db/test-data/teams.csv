@@ -3,3 +3,7 @@ team_id,season_id,team_name,team_captain,wins,losses,draws,goals_for,goals_again
 2,1,"Yeminis",,2,0,1,2,6,5
 3,1,"Man United",,1,2,1,4,3,3
 4,1,"Afriqa",,1,0,2,0,4,1
+5,2,"Pirates",,3,0,0,6,3,9
+6,2,"Rangers",,2,0,1,4,6,5
+7,2,"Bucks",,1,2,0,4,2,2
+8,2,"Heat",,0,0,3,0,8,0
