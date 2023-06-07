@@ -60,6 +60,7 @@ CREATE TABLE IF NOT EXISTS `location` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `games` (
   `game_id` INT NOT NULL,
+  `season_id` INT NOT NULL,
   `team1_id` INT NOT NULL,
   `team2_id` INT NOT NULL,
   `location_id` INT NULL DEFAULT NULL,
@@ -67,6 +68,10 @@ CREATE TABLE IF NOT EXISTS `games` (
   `start_time` VARCHAR(50) NULL DEFAULT NULL,
   `playoff` INT NULL DEFAULT NULL,
   PRIMARY KEY (`game_id`),
+  FOREIGN KEY (`season_id` ) 
+    REFERENCES season (`season_id`)
+        ON DELETE CASCADE 
+        ON UPDATE NO ACTION,
   FOREIGN KEY (`team1_id` ) 
     REFERENCES teams (`team_id`)
         ON DELETE CASCADE 

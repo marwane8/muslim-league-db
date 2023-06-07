@@ -20,8 +20,8 @@ INSERT INTO teams (team_id,season_id,team_name,team_captain,wins,losses,draws,go
 SELECT team_id,season_id,team_name,team_captain,wins,losses,draws,goals_for,goals_against,points
 FROM teams_temp;
 
-INSERT INTO games (game_id, team1_id, team2_id, location_id, date, start_time, playoff)
-SELECT game_id, team1_id, team2_id, location_id, date, start_time, playoff
+INSERT INTO games (game_id, season_id, team1_id, team2_id, location_id, date, start_time, playoff)
+SELECT game_id, season_id, team1_id, team2_id, location_id, date, start_time, playoff
 FROM games_temp;
 
 INSERT INTO players (player_id,player_name,player_last_name,player_number,player_pos)

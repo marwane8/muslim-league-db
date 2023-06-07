@@ -58,15 +58,17 @@ CREATE VIEW `team_totals` AS
 -- -----------------------------------------------------
 CREATE  VIEW `player_totals` AS 
     SELECT
+        `games`.`season_id` AS `season_id`,
         `st`.`player_id` AS `p_id`,
         `players`.`player_name` AS `player_name`,
         Count(*) AS `games_played`,
         sum(`st`.`goals`) AS `goals`,
         sum(`st`.`assists`) AS `assists`
     FROM 
-        (`statistics` `st` 
-        left join `players` on((`st`.`player_id` = `players`.`player_id`))) 
-        group by `p_id`;
+        ((`statistics` `st` 
+        LEFT JOIN `games` ON ((`st`.`game_id` = `games`.`game_id`)))
+        LEFT JOIN `players` on((`st`.`player_id` = `players`.`player_id`))) 
+        GROUP BY `p_id`;
 
 -- -----------------------------------------------------
 -- Roster View 
