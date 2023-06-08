@@ -3,6 +3,7 @@
 -- -----------------------------------------------------
 CREATE VIEW `schedule` AS
     SELECT
+        `games`.`season_id` AS `season_id`,
         `games`.`game_id` AS `game_id`,
         `games`.`team1_id` AS `team1_id`,
         `tm1`.`team_name` AS `team1`,
