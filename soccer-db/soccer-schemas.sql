@@ -90,12 +90,11 @@ CREATE TABLE IF NOT EXISTS `games` (
 -- Table Statistics
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `statistics` (
-  `stat_id` INT NOT NULL,
+  `stat_id` INTEGER PRIMARY KEY,
   `game_id` INT NOT NULL,
   `player_id` INT NOT NULL,
-  `goals` INT NULL DEFAULT NULL,
-  `assists` INT NULL DEFAULT NULL,
-  PRIMARY KEY (`stat_id`),
+  `goals` INT CHECK (goals <= 30),
+  `assists` INT CHECK (assists <= 30),
   FOREIGN KEY (`game_id` ) 
     REFERENCES games (`game_id`)
         ON DELETE CASCADE 
