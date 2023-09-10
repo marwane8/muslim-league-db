@@ -43,6 +43,24 @@ CREATE TABLE IF NOT EXISTS `teams` (
         ON UPDATE NO ACTION
 );
 
+
+-- -----------------------------------------------------
+-- Table teams_players
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `teams_players` (
+  `team_id` INT NOT NULL,
+  `player_id` INT NOT NULL,
+  PRIMARY KEY (`team_id`, `player_id`),
+  FOREIGN KEY (`team_id` ) 
+    REFERENCES teams (`team_id`)
+        ON DELETE CASCADE 
+        ON UPDATE NO ACTION,
+  FOREIGN KEY (`player_id` ) 
+    REFERENCES players (`player_id`)
+        ON DELETE CASCADE 
+        ON UPDATE NO ACTION
+);
+
 -- -----------------------------------------------------
 -- Table Location
 -- -----------------------------------------------------
@@ -93,6 +111,7 @@ CREATE TABLE IF NOT EXISTS `statistics` (
   `stat_id` INTEGER PRIMARY KEY,
   `game_id` INT NOT NULL,
   `player_id` INT NOT NULL,
+  `dnp` BOOLEAN NOT NULL CHECK (`dnp` IN (0, 1)) DEFAULT 0,
   `goals` INT CHECK (goals <= 30),
   `assists` INT CHECK (assists <= 30),
   FOREIGN KEY (`game_id` ) 
@@ -105,20 +124,3 @@ CREATE TABLE IF NOT EXISTS `statistics` (
         ON UPDATE NO ACTION
 );
  
-
--- -----------------------------------------------------
--- Table teams_players
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `teams_players` (
-  `team_id` INT NOT NULL,
-  `player_id` INT NOT NULL,
-  PRIMARY KEY (`team_id`, `player_id`),
-  FOREIGN KEY (`team_id` ) 
-    REFERENCES teams (`team_id`)
-        ON DELETE CASCADE 
-        ON UPDATE NO ACTION,
-  FOREIGN KEY (`player_id` ) 
-    REFERENCES players (`player_id`)
-        ON DELETE CASCADE 
-        ON UPDATE NO ACTION
-);

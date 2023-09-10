@@ -23,6 +23,23 @@ CREATE VIEW `schedule` AS
 -- -----------------------------------------------------
 -- Game Totals 
 -- -----------------------------------------------------
+CREATE VIEW `game_statistics` AS
+    SELECT 
+        `s`.`game_id` AS `game_id`,
+        `s`.`player_id` AS `player_id`,
+        `s`.`stat_id` AS `stat_id`,
+        `p`.`player_name` AS `name`,
+        `s`.`dnp` AS `dnp`,
+        `s`.`goals` AS `goals`,
+        `s`.`assists` AS `assists`
+    FROM
+        (`players` `p`
+        LEFT JOIN `statistics` `s` ON ((`p`.`player_id` = `s`.`player_id`)));
+
+
+-- -----------------------------------------------------
+-- Game Totals 
+-- -----------------------------------------------------
 CREATE VIEW `game_totals` AS
     SELECT 
         `teams`.`team_id` AS `t_id`,

@@ -19,6 +19,23 @@ CREATE VIEW `schedule` AS
         left join `location` `l` on((`games`.`location_id` = `l`.`location_id`))) 
         left join `teams` `tm2` on((`games`.`team2_id` = `tm2`.`team_id`)));
 
+-- -----------------------------------------------------
+-- Game Totals 
+-- -----------------------------------------------------
+CREATE VIEW `game_statistics` AS
+    SELECT 
+        `s`.`game_id` AS `game_id`,
+        `s`.`player_id` AS `player_id`,
+        `s`.`stat_id` AS `stat_id`,
+        `p`.`player_name` AS `name`,
+        `s`.`dnp` AS `dnp`,
+        `s`.`points` AS `points`,
+        `s`.`rebounds` AS `rebounds`,
+        `s`.`fouls` AS `fouls`
+    FROM
+        (`players` `p`
+        LEFT JOIN `statistics` `s` ON ((`p`.`player_id` = `s`.`player_id`)));
+
 
 -- -----------------------------------------------------
 -- Game Totals 
@@ -39,7 +56,7 @@ CREATE VIEW `game_totals` AS
         GROUP BY `t_id`,`g_id`;
 
 -- -----------------------------------------------------
--- Game Totals 
+-- Team Totals 
 -- -----------------------------------------------------
 CREATE VIEW `team_totals` AS
     SELECT 

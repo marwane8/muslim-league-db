@@ -44,6 +44,23 @@ CREATE TABLE IF NOT EXISTS `teams` (
 );
 
 -- -----------------------------------------------------
+-- Table `muslimball`.`teams_players`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `teams_players` (
+  `team_id` INT NOT NULL,
+  `player_id` INT NOT NULL,
+  PRIMARY KEY (`team_id`, `player_id`),
+  FOREIGN KEY (`team_id` ) 
+    REFERENCES teams (`team_id`)
+        ON DELETE CASCADE 
+        ON UPDATE NO ACTION,
+  FOREIGN KEY (`player_id` ) 
+    REFERENCES players (`player_id`)
+        ON DELETE CASCADE 
+        ON UPDATE NO ACTION
+);
+
+-- -----------------------------------------------------
 -- Table `muslimball`.`location`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `location` (
@@ -93,6 +110,7 @@ CREATE TABLE IF NOT EXISTS `statistics` (
   `stat_id` INT NOT NULL,
   `game_id` INT NOT NULL,
   `player_id` INT NOT NULL,
+  `dnp` BOOLEAN NOT NULL CHECK (`dnp` IN (0, 1)) DEFAULT 0,
   `points` INT NULL DEFAULT NULL,
   `rebounds` INT NULL DEFAULT NULL,
   `fouls` INT NULL DEFAULT NULL,
@@ -108,19 +126,3 @@ CREATE TABLE IF NOT EXISTS `statistics` (
 );
  
 
--- -----------------------------------------------------
--- Table `muslimball`.`teams_players`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `teams_players` (
-  `team_id` INT NOT NULL,
-  `player_id` INT NOT NULL,
-  PRIMARY KEY (`team_id`, `player_id`),
-  FOREIGN KEY (`team_id` ) 
-    REFERENCES teams (`team_id`)
-        ON DELETE CASCADE 
-        ON UPDATE NO ACTION,
-  FOREIGN KEY (`player_id` ) 
-    REFERENCES players (`player_id`)
-        ON DELETE CASCADE 
-        ON UPDATE NO ACTION
-);
