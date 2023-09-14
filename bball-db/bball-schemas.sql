@@ -107,14 +107,13 @@ CREATE TABLE IF NOT EXISTS `games` (
 -- Table `muslimball`.`statistics`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `statistics` (
-  `stat_id` INT NOT NULL,
+  `stat_id` INTEGER PRIMARY KEY,
   `game_id` INT NOT NULL,
   `player_id` INT NOT NULL,
   `dnp` BOOLEAN NOT NULL CHECK (`dnp` IN (0, 1)) DEFAULT 0,
   `points` INT NULL DEFAULT NULL,
   `rebounds` INT NULL DEFAULT NULL,
   `fouls` INT NULL DEFAULT NULL,
-  PRIMARY KEY (`stat_id`),
   FOREIGN KEY (`game_id` ) 
     REFERENCES games (`game_id`)
         ON DELETE CASCADE 
