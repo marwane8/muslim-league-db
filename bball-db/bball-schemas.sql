@@ -11,12 +11,14 @@ CREATE TABLE IF NOT EXISTS `seasons` (
 -- Table `muslimball`.`players`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `players` (
-  `player_id` INT NOT NULL,
-  `player_name` VARCHAR(255) NOT NULL,
-  `player_last_name` VARCHAR(255) NOT NULL,
-  `player_number` INT NULL DEFAULT NULL,
-  `player_pos` VARCHAR(5) NULL DEFAULT NULL,
-  PRIMARY KEY (`player_id`));
+  `id` INTEGER PRIMARY KEY,
+  `active` BOOLEAN NOT NULL CHECK (`active` IN (0, 1)) DEFAULT 0,
+  `f_name` VARCHAR(255) NOT NULL,
+  `l_name` VARCHAR(255) NOT NULL,
+  `name` VARCHAR(255) NOT NULL,
+  `number` INT NULL DEFAULT NULL,
+  `pos` VARCHAR(5) NULL DEFAULT NULL
+);
 
 -- -----------------------------------------------------
 -- Table `muslimball`.`teams`

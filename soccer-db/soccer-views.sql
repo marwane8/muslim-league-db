@@ -30,14 +30,14 @@ CREATE VIEW `game_statistics` AS
         `t`.`team_name` AS `team_name`,
         `s`.`player_id` AS `player_id`,
         `s`.`stat_id` AS `stat_id`,
-        `p`.`player_name` AS `player_name`,
+        `p`.`name` AS `player_name`,
         `s`.`dnp` AS `dnp`,
         `s`.`goals` AS `goals`,
         `s`.`assists` AS `assists`
     FROM
         (((`teams_players` `tp`
         LEFT JOIN `teams` `t` ON ((`tp`.`team_id` = `t`.`team_id`)))
-        LEFT JOIN `players` `p` ON ((`tp`.`player_id` = `p`.`player_id`)))
+        LEFT JOIN `players` `p` ON ((`tp`.`player_id` = `p`.`id`)))
         LEFT JOIN `statistics` `s` ON (`tp`.`player_id` = `s`.`player_id`));
 
 -- -----------------------------------------------------
@@ -53,7 +53,7 @@ CREATE VIEW `game_totals` AS
     FROM
         (((`teams_players` `tp`
         LEFT JOIN `teams` ON ((`tp`.`team_id` = `teams`.`team_id`)))
-        LEFT JOIN `players` ON ((`tp`.`player_id` = `players`.`player_id`)))
+        LEFT JOIN `players` ON ((`tp`.`player_id` = `players`.`id`)))
         LEFT JOIN `statistics` ON (`tp`.`player_id` = `statistics`.`player_id`))
         GROUP BY `t_id`,`g_id`;
 
@@ -70,7 +70,7 @@ CREATE VIEW `team_totals` AS
     FROM
         (((`teams_players` `tp`
         LEFT JOIN `teams` ON ((`tp`.`team_id` = `teams`.`team_id`)))
-        LEFT JOIN `players` ON ((`tp`.`player_id` = `players`.`player_id`)))
+        LEFT JOIN `players` ON ((`tp`.`player_id` = `players`.`id`)))
         LEFT JOIN `statistics` ON (`tp`.`player_id` = `statistics`.`player_id`))
         GROUP BY `t_id`;
 
@@ -81,14 +81,14 @@ CREATE  VIEW `player_totals` AS
     SELECT
         `games`.`season_id` AS `season_id`,
         `st`.`player_id` AS `p_id`,
-        `players`.`player_name` AS `player_name`,
+        `players`.`name` AS `player_name`,
         Count(*) AS `games_played`,
         sum(`st`.`goals`) AS `goals`,
         sum(`st`.`assists`) AS `assists`
     FROM 
         ((`statistics` `st` 
         LEFT JOIN `games` ON ((`st`.`game_id` = `games`.`game_id`)))
-        LEFT JOIN `players` on((`st`.`player_id` = `players`.`player_id`))) 
+        LEFT JOIN `players` on((`st`.`player_id` = `players`.`id`))) 
         GROUP BY `p_id`;
 
 -- -----------------------------------------------------
@@ -96,13 +96,13 @@ CREATE  VIEW `player_totals` AS
 -- -----------------------------------------------------
 CREATE VIEW `roster` AS
     SELECT 
-        `players`.`player_id` AS `id`,
+        `players`.`id` AS `id`,
         `teams`.`team_id` AS `team_id`,
         `teams`.`team_name` AS `team_name`,
-        `players`.`player_name` AS `player_name`,
-        `players`.`player_number` AS `player_number`,
-        `players`.`player_pos` AS `player_pos`
+        `players`.`name` AS `player_name`,
+        `players`.`number` AS `player_number`,
+        `players`.`pos` AS `player_pos`
     FROM
         ((`teams_players` `tp`
         LEFT JOIN `teams` ON ((`tp`.`team_id` = `teams`.`team_id`)))
-        LEFT JOIN `players` ON ((`tp`.`player_id` = `players`.`player_id`)))
+        LEFT JOIN `players` ON ((`tp`.`player_id` = `players`.`id`)))

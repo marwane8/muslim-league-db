@@ -24,8 +24,8 @@ INSERT INTO games (game_id, season_id, team1_id, team2_id, location_id, date, st
 SELECT game_id, season_id, team1_id, team2_id, location_id, date, start_time, playoff
 FROM games_temp;
 
-INSERT INTO players (player_id,player_name,player_last_name,player_number,player_pos)
-SELECT player_id,player_name,player_last_name,player_number,player_pos
+INSERT INTO players (id,active,f_name,l_name,name,number,pos)
+SELECT id,active,f_name,l_name,name,number,pos
 FROM players_temp;
 
 INSERT INTO teams_players (team_id,player_id)
