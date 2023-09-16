@@ -106,6 +106,9 @@ CREATE VIEW `roster` AS
         `players`.`id` AS `id`,
         `teams`.`team_id` AS `team_id`,
         `teams`.`team_name` AS `team_name`,
+        `players`.`active` AS `active`,
+        `players`.`f_name` AS `f_name`,
+        `players`.`f_name` AS `l_name`,
         `players`.`name` AS `player_name`,
         `players`.`number` AS `player_number`,
         `players`.`pos` AS `player_pos`
