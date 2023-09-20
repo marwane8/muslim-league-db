@@ -87,6 +87,7 @@ CREATE TABLE IF NOT EXISTS `games` (
   `date` INT NULL DEFAULT NULL,
   `start_time` VARCHAR(50) NULL DEFAULT NULL,
   `playoff` INT NULL DEFAULT NULL,
+  `played` BOOLEAN NOT NULL CHECK (`played` IN (0, 1)) DEFAULT 0,
   PRIMARY KEY (`game_id`),
   FOREIGN KEY (`season_id` ) 
     REFERENCES season (`season_id`)

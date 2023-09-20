@@ -12,7 +12,8 @@ CREATE VIEW `schedule` AS
         `games`.`date` AS `date`,
         `games`.`start_time` AS `start_time`,
         `l`.`court` AS `court`,
-        `games`.`playoff` AS `playoff` 
+        `games`.`playoff` AS `playoff`,
+        `games`.`played` AS `played` 
     from 
         (((`games` 
         left join `teams` `tm1` on((`games`.`team1_id` = `tm1`.`team_id`))) 
