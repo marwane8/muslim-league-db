@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `teams` (
         ON DELETE CASCADE 
         ON UPDATE NO ACTION,
   FOREIGN KEY (`team_captain`) 
-    REFERENCES players (`player_id`)
+    REFERENCES players (`id`)
         ON DELETE CASCADE 
         ON UPDATE NO ACTION
 );
@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `teams_players` (
         ON DELETE CASCADE 
         ON UPDATE NO ACTION,
   FOREIGN KEY (`player_id` ) 
-    REFERENCES players (`player_id`)
+    REFERENCES players (`id`)
         ON DELETE CASCADE 
         ON UPDATE NO ACTION
 );
@@ -122,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `statistics` (
         ON DELETE CASCADE 
         ON UPDATE NO ACTION,
   FOREIGN KEY (`player_id` ) 
-    REFERENCES players (`player_id`)
+    REFERENCES players (`id`)
         ON DELETE CASCADE 
         ON UPDATE NO ACTION
 );
