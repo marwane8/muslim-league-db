@@ -1,4 +1,4 @@
-game_id,season_id,team1_id,team2_id,location_id,date,start_time,playoff,played
+id,season_id,team1_id,team2_id,location_id,date,start_time,playoff,played
 40,1,11,12,14,20210619,"10:30 AM",0,0
 41,1,13,14,13,20210619,"9:30 AM",0,0
 42,1,11,14,14,20210710,"10:30 AM",0,0
